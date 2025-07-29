@@ -1,9 +1,9 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from pydantic import BaseModel
 import openai
 import os
-from dotenv import load_dotenv
 
+from dotenv import load_dotenv
 load_dotenv()
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -26,4 +26,3 @@ def chat_with_ai(prompt: Prompt):
         return {"response": response['choices'][0]['message']['content']}
     except Exception as e:
         return {"error": str(e)}
-
